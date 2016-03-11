@@ -1,0 +1,90 @@
+%post_content_ttl
+  h1, h2, h3, h4, h5, h6
+  h1
+
+  h2
+  h3
+  h4
+  h5
+  h6
+
+%post_content_boundary
+  div
+  section
+
+%post_content_tbl
+  table
+    tr
+      thead
+      th
+      td
+        img
+      tfoot
+
+%post_content_li
+  ul
+    li
+  ol
+    li
+
+%post_content_dl
+  dl
+    dt
+    dd
+
+%post_content_hr
+  hr
+
+%post_content_text
+  ::selection // 背景色暗転
+    background: $danger
+    color: $grey-lighter
+    font-weight: bold
+  br
+  p
+    margin-bottom: 1.6em
+    font-size: 1em
+    line-height: 1.875
+    word-wrap: break-word
+    +desktop
+      line-height: 1.6
+
+  // pre
+  // small
+  // strong
+  // sup
+  // sub
+  // em
+  // ins
+
+%post_content_link
+  a
+    background: linear-gradient(transparent 60%, rgba(177, 228, 20, .5) 100%)
+    img
+      box-shadow: 0 20px $grey-lighter
+
+%post_content_code
+  pre
+    width: 720px
+    margin: 1em 0
+    white-space: pre
+    word-wrap: normal
+    font-family: $family-monospace
+
+%post_content_img
+  img
+    width: 100%
+    margin: 4px 0
+    vertical-align: bottom
+
+
+// 構造
+.post_content
+  @extend %post_content_ttl
+  @extend %post_content_tbl
+  @extend %post_content_ul
+  @extend %post_content_hr
+  @extend %post_content_text
+  @extend %post_content_code
+  @extend %post_content_link
+  @extend %post_content_img

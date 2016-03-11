@@ -1,0 +1,44 @@
+.l_header
+  width: 100%
+  margin-bottom: $margin
+  +desktop
+    margin-bottom: 1.5 * $margin
+
+.l_navbar
+  width: 100%
+  .navbar
+    display: flex
+    margin: 0
+    padding: 0
+    align-items: stretch
+    list-style-type: none
+
+.navbar_item
+  flex: 1
+  text-align: center
+  a
+    display: block
+    padding: $margin
+    color: white
+
+
+.navbar_item_bycycle
+  order: 1
+  @extend .navbar_item
+  background: #3498db
+.navbar_item_cat
+  order: 2
+  @extend .navbar_item
+  background: #40d47e
+.navbar_item_home
+  order: 3
+  @extend .navbar_item
+  background: $turquoise
+.navbar_item_game
+  order: 4
+  @extend .navbar_item
+  background: #9b59b6
+.navbar_item_programming
+  order: 5
+  @extend .navbar_item
+  background: #e74c3c

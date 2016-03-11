@@ -1,0 +1,89 @@
+@keyframes spin-around
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(359deg)
+
+// 下線を左から表示する
+=anime_underline($hover_color)
+  position: relative
+  display: inline-block
+  transition: all .25s ease-out
+  &:hover
+    color: $hover_color
+  &:after
+    position: absolute
+    z-index: -1
+    content: ""
+    width: 0
+    height: 2px
+    left: 0
+    bottom: 1px
+    background-image: linear-gradient(90deg, transparent, transparent 50%, #fff 50%, #fff 100%), linear-gradient(90deg, $hover_color 60%, $success 94%, $danger 95%, rgba(255, 0 ,0, 0) 100%)
+    background-size: 10px 1px, 100% 1px
+    transition: all .25s ease-out 0s
+  &:focus:after, &:hover:after
+    width: 100%
+
+=anime_rotate($deg)
+  transition: all .25s ease-out
+  &:hover
+    transform: rotate($deg)
+
+=anime_bg($color, $bg_color)
+  transition: all .25s ease-out
+  &:hover
+    color: $color
+    background: $bg_color
+
+=anime_zoom($scale: 1.1)
+  transition: all .2s ease-out
+  transform: scale(1)
+  &:hover
+    // padding: 0 $margin
+    transform: scale($scale)
+  &:hover:after
+    // width: calc(100% - (2 * #{$margin}))
+    // margin: 0 $margin
+
+// filter
+=filter_lofi($radius:0)
+  position: relative
+  font-size: 0
+  filter: none
+  transition: all .25s ease-out
+  img
+    z-index: 1
+    width: 100%
+  &:after
+    z-index: 2
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    pointer-events: none
+    border-radius: $radius
+  &:hover
+    filter: saturate(1.1) contrast(1.2)
+  &:hover:after
+    background: radial-gradient(circle, transparent 70%, #222 150%)
+    mix-blend-mode: multiply
+
+=anime_inner_line
+  position: relative
+  &:before
+    z-index: 2
+    position: absolute
+    top: 0
+    display: block
+    content: ""
+    width: 100%
+    height: 100%
+  &:hover:before
+    transform: scale(.95, .9)
+    border: 1px solid rgba(255, 255, 255, .7)
+    border-radius: $margin
+    transition: all .15s ease-out

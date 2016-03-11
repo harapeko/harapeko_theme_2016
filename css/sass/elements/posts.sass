@@ -1,0 +1,178 @@
+// 投稿記事
+%post_figure_hero
+  margin-bottom: $margin
+  >a
+    +filter_lofi($margin)
+    +anime_inner_line
+    display: block
+    .post_img
+      width: 100%
+      border-radius: $margin
+
+%post_ttl_hero
+  margin-bottom: $margin
+  font-weight: bold
+  font-size: $fz_medium
+  line-height: $lh-small
+  >a
+    color: $grey-darker
+    +anime_underline($info)
+    +anime_zoom(1.002)
+    +tablet
+      font-size: $fz_large
+    +desktop
+      font-size: $fz_larger
+      line-height: $lh-normal
+
+%post_figure_entry
+  margin-bottom: ($margin / 2) //
+  >a
+    +filter_lofi($margin)
+    +anime_inner_line
+    display: block
+    .post_img
+      width: 100%
+      border-radius: $margin
+
+%post_ttl_entry
+  margin-bottom: ($margin / 2) //
+  font-weight: bold
+  font-size: $fz_x_small //
+  line-height: $lh-smaller //
+  >a
+    color: $grey-darker
+    +anime_underline($info)
+    +anime_zoom(1.002)
+    +tablet
+      font-size: $fz_smaller //
+    +desktop
+      font-size: $fz_small //
+      line-height: $lh-small //
+
+%post_info_hero
+  display: flex
+  justify-content: flex-end
+  margin-bottom: $margin
+  padding: ($margin / 2) 0
+  border-top: 1px solid $grey-light
+  border-bottom: 1px solid $grey-light
+  font-size: $fz_x_smaller
+  +tablet
+    font-size: $fz_smaller
+  +desktop
+    font-size: $fz_small
+  .post_date
+    margin-right: auto
+    color: $grey
+    font-family: $family-monospace
+
+%post_info_entry
+  display: flex
+  justify-content: flex-end
+  margin-bottom: ($margin / 2) //
+  padding: 0 //
+  // border-top: 1px solid $grey-light
+  border-bottom: 1px solid $grey-light
+  font-size: $fz_tiny
+  +tablet
+    font-size: $fz_x_smaller
+  +desktop
+    font-size: $fz_small
+  .post_date
+    margin-right: auto
+    color: $grey
+    font-family: $family-monospace
+
+%post_li_genre_hero
+  display: flex
+  .post_category, .post_tag
+    margin-left: $margin
+    +anime_zoom
+    > a:hover
+      text-decoration: underline
+  .post_category > a
+    display: inline
+    color: $danger
+    > .fa
+      display: inline
+      margin-right: ($margin / 4)
+      padding: 2px
+      color: white
+      background: $danger
+      border-radius: 4px
+  .post_tag > a
+    +anime_zoom
+    display: inline
+    color: $info
+    > .fa
+      display: inline
+      margin-right: ($margin / 4)
+      padding: 2px
+      background: $info
+      border-radius: 4px
+      color: white
+
+%post_beginning_hero
+  font-size: $fz_normal
+  line-height: $lh-small
+  +desktop
+    font-size: $fz_large
+    line-height: $lh-normal
+  >a
+    display: inline-block
+    color: $info
+    &:hover
+      text-decoration: underline
+      +anime_zoom
+
+
+%post_hero
+  margin-bottom: (2 * $margin)
+  +tablet
+    margin-bottom: (4 * $margin)
+  .post_ttl
+    @extend %post_ttl_hero
+  .post_figure
+    @extend %post_figure_hero
+    order: -20
+  .post_info
+    @extend %post_info_hero
+    .post_li_genre
+      @extend %post_li_genre_hero
+  .post_beginning
+    @extend %post_beginning_hero
+
+%post_entry
+  width: 100%
+  margin-bottom: $margin
+  +tablet
+    width: 50%
+    margin-bottom: $margin * 2
+    &:nth-child(odd)
+      padding-left: 2 * ($margin / 3)
+    &:nth-child(even)
+      padding-right: 2 * ($margin / 3)
+  .post_ttl
+    @extend %post_ttl_entry
+  .post_figure
+    @extend %post_figure_entry
+    order: -20
+  .post_info
+    @extend %post_info_entry
+    order: -10
+    .post_li_genre
+      @extend %post_li_genre_hero
+
+.post_articles
+  display: flex
+  flex-flow: row wrap
+  .post_article
+    display: flex
+    width: 100%
+    flex-direction: column
+    box-sizing: border-box
+    &.post_hero
+      @extend %post_hero
+    &.post_entry
+      @extend %post_entry
+
