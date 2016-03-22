@@ -40,14 +40,15 @@ function harapeko_2016__setup() {
 	 * hard-coded <title> tag in the document head, and expect WordPress to
 	 * provide it for us.
 	 */
-	// add_theme_support( 'title-tag' );
+	add_theme_support( 'title-tag' );
 
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
-	// add_theme_support( 'post-thumbnails' );
+	// アイキャッチ画像 使用可能
+	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
 	// register_nav_menus( array(
@@ -163,3 +164,16 @@ add_action( 'after_setup_theme', 'harapeko_2016__setup' );
  * Load Jetpack compatibility file.
  */
 // require get_template_directory() . '/inc/jetpack.php';
+
+// アイキャッチ画像のwidth、heightを削除
+add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
+add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
+function remove_width_attribute( $html ) {
+   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+   return $html;
+}
+
+function meks_disable_srcset( $html ) {
+    return false;
+}
+add_filter( 'wp_calculate_image_srcset', 'meks_disable_srcset' );

@@ -1,47 +1,24 @@
-<?php
-/**
- * Template part for displaying posts.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package Harapeko_2016_
- */
+<article class="post_article <?php echo ($wp_query->current_post === 0) ? "post_hero": "post_entry";//1件目、2件目以降でclass分岐する ?>">
+	<?php if ( is_single() ) {
+		the_title( '<h1 class="post_ttl">', '</h1>' ); // single.phpならh1
+	} else {
+		the_title( '<h2 class="post_ttl"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+	} ?>
+	<figure class="post_figure">
+		<a href="<?php echo esc_url( get_permalink() ) ?>">
+			<?php echo has_post_thumbnail() ? the_post_thumbnail( '', array('class' => 'post_img') ) : '<img class="post_img" src="https://placekitten.com/g/680/296">'; ?>
+		</a>
+	</figure>
 
-?>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-			if ( is_single() ) {
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			} else {
-				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-			}
-
-		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php harapeko_2016__posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php
-		endif; ?>
-	</header><!-- .entry-header -->
-
-	<div class="entry-content">
-		<?php
-			the_content( sprintf(
-				/* translators: %s: Name of current post. */
-				wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'harapeko_2016_' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
-
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'harapeko_2016_' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php harapeko_2016__entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-## -->
+	<div class="post_info">
+		<div class="post_date"><?php the_time('Y/m/d(D)') ?></div>
+		<ul class="post_li_genre">
+	  		<li class="post_category" rel="category"><a href="<?php echo get_the_category()[0]->slug; ?>"><i class="fa fa-map-signs"></i><?php echo get_the_category()[0]->name; ?></a></li>
+	  		<li class="post_tag" rel="tag"><a href="<?php echo get_the_tags()[0]->slug; ?>"><i class="fa fa-tag"></i><?php echo get_the_tags()[0]->name; ?></a></li>
+		</ul>
+	</div>
+	
+	<?php if( $wp_query->current_post === 0 ): //1件目なら本文表示する ?>
+		<div class="post_beginning"><?php the_content(false); ?></div>
+	<?php endif; ?>
+</article><!-- /.post_article -->
