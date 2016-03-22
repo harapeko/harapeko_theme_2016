@@ -1,17 +1,8 @@
-<?php
-/**
- * The sidebar containing the main widget area.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package Harapeko_2016_
- */
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
-?>
-
 <aside class="l_side" role="complementary">
-	aside
+asideあとで入替え(single.php)
+<img src="http://placehold.jp/24/cc9999/993333/250x250.png?text=Ad_area">
+
+<?php if( is_active_sidebar( 'sidebar-1' ) ): ?>
 	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+<?php endif; ?>
 </aside>

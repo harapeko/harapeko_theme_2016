@@ -43,12 +43,6 @@
 
     	<?php while ( have_posts() ) : the_post(); ?>
         <?php echo has_post_thumbnail() ? the_post_thumbnail('thumbnail') : '<img src="https://placekitten.com/g/150/150">'; ?>
-    		<?php/*
-    		 * Include the Post-Format-specific template for the content.
-    		 * If you want to override this in a child theme, then include a file
-    		 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-    		 */
-    		?>
     		<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
     	<?php endwhile; ?>
     
@@ -58,13 +52,7 @@
 
   </main>
   
-  <aside class="l_side" role="complementary">
-  	asideあとで↓に入替え
-  	<img src="http://placehold.jp/24/cc9999/993333/250x250.png?text=Ad_area">
-  	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-  	<?php get_sidebar(); ?>
-  </aside>
+  <?php get_sidebar(); ?>
 </div><!-- /.l_contents -->
-
 
 <?php get_footer(); ?>

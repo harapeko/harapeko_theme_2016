@@ -20,27 +20,20 @@
     </article>
 
 
-  	<?php
-  	while ( have_posts() ) : the_post();
+  	<?php while ( have_posts() ) : the_post(); ?>
   
-  		get_template_part( 'template-parts/content', get_post_format() );
+  		<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
   
-  		the_post_navigation();
+  		<?php the_post_navigation(); ?>
   
-  		// If comments are open or we have at least one comment, load up the comment template.
-  		if ( comments_open() || get_comments_number() ) :
-  			comments_template();
-  		endif;
+  		<?php if ( comments_open() || get_comments_number() ) : ?>
+  			<?php comments_template(); ?>
+  		<?php endif; ?>
   
-  	endwhile; // End of the loop.
-	  ?>
+  	<?php endwhile; ?>
   </main><!-- .l_main -->
 
-  <aside class="l_side" role="complementary">
-    asideあとで入替え(single.php)
-    <img src="http://placehold.jp/24/cc9999/993333/250x250.png?text=Ad_area">
-    <?php get_sidebar(); ?>
-  </aside>
+  <?php get_sidebar(); ?>
 </div><!-- /.l_contents -->
 
 <?php get_footer(); ?>
