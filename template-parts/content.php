@@ -5,7 +5,7 @@
 		the_title( '<h2 class="post_ttl"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 	} ?>
 	<figure class="post_figure">
-		<a href="<?php echo esc_url( get_permalink() ) ?>">
+		<a href="<?php echo ( is_single() ) ? "javascript:void(0)": esc_url( get_permalink() ); ?>">
 			<?php echo has_post_thumbnail() ? the_post_thumbnail( '', array('class' => 'post_img') ) : '<img class="post_img" src="https://placekitten.com/g/680/296">'; ?>
 		</a>
 	</figure>
@@ -18,7 +18,9 @@
 		</ul>
 	</div>
 	
-	<?php if( $wp_query->current_post === 0 ): //1件目なら本文表示する ?>
-		<div class="post_beginning"><?php the_content(false); ?></div>
+	<?php if( ($wp_query->current_post === 0) ): //1件目なら本文表示する ?>
+		<div class="<?php echo ( is_single() ) ? "post_content": "post_beginning"; ?>">
+			<?php the_content(false); ?>
+		</div>
 	<?php endif; ?>
 </article><!-- /.post_article -->

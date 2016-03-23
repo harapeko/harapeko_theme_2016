@@ -11,7 +11,7 @@
     <?php endif; ?>
 
     <?php the_posts_navigation(); ?>
-  </main>
+  </main><!-- .l_main -->
   
   <?php get_sidebar(); ?>
 </div><!-- /.l_contents -->
