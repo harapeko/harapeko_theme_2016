@@ -1,0 +1,29 @@
+.box_404_error
+  position: relative
+  margin-bottom: $margin
+  +filter_lofi($margin)
+  +anime_inner_line
+  .box_404_error_ttl
+    color: rgba(255, 255, 255, 0.8)
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8)
+    .box_404_error_ttl_hoge
+      position: absolute
+      top: ($margin * 2)
+      left: ($margin * 2)
+      line-height: 1em
+      z-index: 100
+      font-size: 2rem
+      +tablet
+        font-size: 3.5rem
+    .box_404_error_ttl_fuga
+      position: absolute
+      bottom: ($margin * 2)
+      right: ($margin * 2)
+      line-height: 1em
+      z-index: 100
+      font-size: 2rem
+      +tablet
+        font-size: 3.5rem
+  .box_404_error_img
+    position: relative
+    border-radius: $margin

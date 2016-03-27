@@ -187,7 +187,8 @@ a {
 
 .l_body {
   width: 100%;
-  max-width: initial; }
+  max-width: initial;
+  min-height: 100vh; }
 
 .l_contents {
   width: 100%;
@@ -698,6 +699,79 @@ a {
   width: 100%;
   margin: 4px 0;
   vertical-align: bottom; }
+
+.box_404_error {
+  position: relative;
+  margin-bottom: 10px;
+  position: relative;
+  font-size: 0;
+  -webkit-filter: none;
+          filter: none;
+  -webkit-transition: all .25s ease-out;
+  transition: all .25s ease-out;
+  position: relative; }
+  .box_404_error img {
+    z-index: 1;
+    width: 100%; }
+  .box_404_error:after {
+    z-index: 2;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-radius: 10px; }
+  .box_404_error:hover {
+    -webkit-filter: saturate(1.1) contrast(1.2);
+            filter: saturate(1.1) contrast(1.2); }
+  .box_404_error:hover:after {
+    background: -webkit-radial-gradient(circle, transparent 70%, #222 150%);
+    background: radial-gradient(circle, transparent 70%, #222 150%);
+    mix-blend-mode: multiply; }
+  .box_404_error:before {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%; }
+  .box_404_error:hover:before {
+    -webkit-transform: scale(0.95, 0.9);
+            transform: scale(0.95, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    -webkit-transition: all .15s ease-out;
+    transition: all .15s ease-out; }
+  .box_404_error .box_404_error_ttl {
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); }
+    .box_404_error .box_404_error_ttl .box_404_error_ttl_hoge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      line-height: 1em;
+      z-index: 100;
+      font-size: 2rem; }
+      @media screen and (min-width: 480px) {
+        .box_404_error .box_404_error_ttl .box_404_error_ttl_hoge {
+          font-size: 3.5rem; } }
+    .box_404_error .box_404_error_ttl .box_404_error_ttl_fuga {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      line-height: 1em;
+      z-index: 100;
+      font-size: 2rem; }
+      @media screen and (min-width: 480px) {
+        .box_404_error .box_404_error_ttl .box_404_error_ttl_fuga {
+          font-size: 3.5rem; } }
+  .box_404_error .box_404_error_img {
+    position: relative;
+    border-radius: 10px; }
 
 .hljs {
   display: block;
