@@ -214,6 +214,9 @@ a {
         -webkit-flex: 1;
             -ms-flex: 1;
                 flex: 1;
+        -webkit-align-content: flex-start;
+            -ms-flex-line-pack: start;
+                align-content: flex-start;
         padding: 0 10px 0 0; } }
   .l_contents .l_side {
     padding: 0 10px; }
@@ -772,6 +775,13 @@ a {
   .box_404_error .box_404_error_img {
     position: relative;
     border-radius: 10px; }
+
+.ttl_01 {
+  width: 100%;
+  margin-bottom: 10px;
+  border-bottom: 2px solid;
+  border-left: 10px solid;
+  border-color: #222324; }
 
 .hljs {
   display: block;
