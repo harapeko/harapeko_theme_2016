@@ -1,25 +1,24 @@
 <?php get_header(); ?>
 
-	<section class="content-area">
-		<main class="site-main" role="main">
+<div class="l_contents">
+	<main class="l_main post_articles" role="main">
 
-		<?php if ( have_posts() ) : ?>
+	<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'harapeko_2016_' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header><!-- .page-header -->
+		<h1 class="page-title" style="display:none;"><?php echo get_search_query(); ?>で検索しました</h1>
 
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'template-parts/content', 'search' ); ?>
-			<?php endwhile; ?>
-			<?php the_posts_navigation(); ?>
+		<?php while ( have_posts() ) : the_post(); ?>
+			<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+		<?php endwhile; ?>
+		<?php the_posts_navigation(); ?>
 
-		<?php else : ?>
-			<?php get_template_part( 'template-parts/content', 'none' ); ?>
-		<?php endif; ?>
+	<?php else : ?>
+		<?php get_template_part( 'template-parts/content', 'none' ); ?>
+	<?php endif; ?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+	</main><!-- ./l_main-main -->
+	
+	<?php get_sidebar(); ?>
+</div><!-- ./l_contents -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

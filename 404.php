@@ -12,6 +12,8 @@
 		</section><!-- .error-404 -->
 		
 		<a href="/">▶トップページに戻る</a>
+		
+		<?php get_search_form(); ?>
 
 	</main><!-- ./l_main-main -->
 	

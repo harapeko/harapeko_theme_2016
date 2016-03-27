@@ -1,9 +1,5 @@
-<article class="post_article <?php echo ($wp_query->current_post === 0) ? "post_hero": "post_entry";//1件目、2件目以降でclass分岐する ?>">
-	<?php if ( is_single() ) {
-		the_title( '<h1 class="post_ttl">', '</h1>' ); // single.phpならh1
-	} else {
-		the_title( '<h2 class="post_ttl"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-	} ?>
+<article class="post_article <?php echo ( is_front_page() && ($wp_query->current_post === 0) ) ? "post_hero": "post_entry";//frontページは1件目、2件目以降でclass分岐する ?>">
+	<?php the_title( '<h2 class="post_ttl"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
 	<figure class="post_figure">
 		<a href="<?php echo ( is_single() ) ? "javascript:void(0)": esc_url( get_permalink() ); ?>">
 			<?php echo has_post_thumbnail() ? the_post_thumbnail( '', array('class' => 'post_img') ) : '<img class="post_img" src="https://placekitten.com/g/680/296">'; ?>
@@ -18,7 +14,7 @@
 		</ul>
 	</div>
 	
-	<?php if( ($wp_query->current_post === 0) ): //1件目なら本文表示する ?>
+	<?php if( ( is_front_page() && ($wp_query->current_post === 0) ) ): //1件目なら本文表示する ?>
 		<div class="<?php echo ( is_single() ) ? "post_content": "post_beginning"; ?>">
 			<?php the_content(false); ?>
 		</div>
