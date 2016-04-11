@@ -157,7 +157,7 @@ html {
 body {
   margin: 0;
   line-height: 1.8;
-  font-family: -apple-system, ’Hiragino Kaku Gothic ProN’, ‘游ゴシック’, ’メイリオ’, meiryo, sans-serif;
+  font-family: -apple-system, ’Hiragino Kaku Gothic ProN’, ‘游ゴシック’, "Yu Gothic", ’メイリオ’, meiryo, sans-serif;
   font-size: 15px;
   color: #222324;
   background: #f5f7fa;
@@ -309,7 +309,23 @@ a {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: #d3d6db; }
+  padding: 10px;
+  background: #222324;
+  color: #f5f7fa; }
+
+.l_footer_site_info {
+  font-size: 1.5em;
+  color: #f5f7fa; }
+  .l_footer_site_info .fa-twitter-square {
+    color: #f5f7fa; }
+  .l_footer_site_info .l_footer_site_info_name {
+    text-decoration: underline;
+    color: #f5f7fa; }
+  .l_footer_site_info .fa-twitter-square {
+    font-size: 3em; }
+  @media screen and (min-width: 768px) {
+    .l_footer_site_info .fa-twitter-square {
+      font-size: 2em; } }
 
 .post_articles .post_article.post_hero .post_figure {
   margin-bottom: 10px; }
