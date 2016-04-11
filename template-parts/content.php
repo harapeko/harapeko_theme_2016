@@ -1,4 +1,4 @@
-<article class="post_article <?php echo ( is_page() || ( is_front_page() && ($wp_query->current_post === 0) ) ) ? "post_hero": "post_entry";//frontページは1件目、2件目以降でclass分岐する ?>">
+<article class="post_article <?php echo ( is_page() || ( !is_admin() && ($wp_query->current_post === 0) ) ) ? "post_hero": "post_entry";//frontページは1件目、2件目以降でclass分岐する ?>">
 	<?php the_title( '<h2 class="post_ttl"><a href="' . ( ( is_single() || is_page() ) ? "javascript:void(0)": esc_url( get_permalink() ) ) . '" rel="bookmark">', '</a></h2>' ); ?>
 	
 	<figure class="post_figure">
