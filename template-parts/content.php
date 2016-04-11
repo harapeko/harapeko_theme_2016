@@ -17,8 +17,8 @@
 		<?php endif; ?>
 	</div>
 	
-	<?php if( is_page() || is_single() || ( is_front_page() && ($wp_query->current_post === 0) ) ): //固定ページ or シングル or 1件目なら本文表示する ?>
-		<div class="<?php echo ( is_single() ) ? "post_content": "post_beginning"; ?>">
+	<?php if( is_page() || is_single() || ( !is_admin() && ($wp_query->current_post === 0) ) ): //固定ページ or シングル or 1件目なら本文表示する ?>
+		<div class="<?php echo ( is_page() || is_single() ) ? "post_content": "post_beginning"; ?>">
 			<?php the_content(false); ?>
 		</div>
 	<?php endif; ?>
