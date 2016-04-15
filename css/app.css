@@ -715,7 +715,7 @@ a {
   font-family: "Source Code Pro", "Monaco", "Inconsolata", monospace; }
 
 .post_content img {
-  width: 100%;
+  max-width: 100%;
   margin: 4px 0;
   vertical-align: bottom; }
 
