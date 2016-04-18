@@ -47,7 +47,7 @@ function harapeko_2016__setup() {
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
-	// アイキャッチ画像 使用可能
+	// アイキャッチ画像 使用可能 670x300
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
@@ -105,18 +105,18 @@ add_action( 'after_setup_theme', 'harapeko_2016__setup' );
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-// function harapeko_2016__widgets_init() {
-// 	register_sidebar( array(
-// 		'name'          => esc_html__( 'Sidebar', 'harapeko_2016_' ),
-// 		'id'            => 'sidebar-1',
-// 		'description'   => '',
-// 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-// 		'after_widget'  => '</section>',
-// 		'before_title'  => '<h2 class="widget-title">',
-// 		'after_title'   => '</h2>',
-// 	) );
-// }
-// add_action( 'widgets_init', 'harapeko_2016__widgets_init' );
+function harapeko_2016__widgets_init() {
+	register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar', 'harapeko_2016_' ),
+		'id'            => 'sidebar-1',
+		'description'   => '',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'harapeko_2016__widgets_init' );
 
 // add_action( 'widgets_init', 'my_remove_recent_comments_style' );
 // function my_remove_recent_comments_style() {

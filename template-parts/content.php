@@ -3,7 +3,7 @@
 	
 	<figure class="post_figure">
 		<a href="<?php echo ( is_single() || is_page() ) ? "javascript:void(0)": esc_url( get_permalink() ); ?>">
-			<?php echo has_post_thumbnail() ? the_post_thumbnail( '', array('class' => 'post_img') ) : '<img class="post_img" src="https://placekitten.com/g/680/296">'; ?>
+			<?php echo has_post_thumbnail() ? the_post_thumbnail( '', array('class' => 'post_img') ) : '<img class="post_img" src="https://placekitten.com/g/670/300">'; ?>
 		</a>
 	</figure>
 
