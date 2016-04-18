@@ -12,7 +12,7 @@
       <?php endwhile; ?>
     <?php endif; ?>
     
-    <?php the_posts_navigation(); ?>
+    <?php the_posts_pagination( array('screen_reader_text' => null) ); ?>
   </main><!-- .l_main -->
 
   <?php get_sidebar(); ?>

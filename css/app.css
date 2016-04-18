@@ -681,6 +681,28 @@ a {
             flex-direction: column;
     box-sizing: border-box; }
 
+.navigation.pagination {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  text-align: center; }
+  .navigation.pagination .screen-reader-text {
+    display: none; }
+  .navigation.pagination .nav-links {
+    font-size: 0; }
+    .navigation.pagination .nav-links .page-numbers {
+      display: -webkit-inline-box;
+      display: -webkit-inline-flex;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      padding: 5px 10px;
+      border: 1px solid #d3d6db;
+      background: -webkit-linear-gradient(#f5f7fa 40%, #d3d6db);
+      background: linear-gradient(#f5f7fa 40%, #d3d6db);
+      font-size: 15px; }
+      .navigation.pagination .nav-links .page-numbers:not(:last-child) {
+        margin-right: 5px; }
+
 .post_content ::-moz-selection {
   background: #ed6c63;
   color: #f5f7fa;

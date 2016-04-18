@@ -178,3 +178,21 @@
     &.post_entry
       @extend %post_entry
 
+// wpページャー
+.navigation.pagination
+  display: block
+  width: 100%
+  margin: ($margin * 2) 0
+  text-align: center
+  .screen-reader-text
+    display: none
+  .nav-links
+    font-size: 0
+    .page-numbers
+      display: inline-flex
+      padding: ($margin / 2) $margin
+      border: 1px solid $grey-light
+      background: linear-gradient($grey-lighter 40%, $grey-light)
+      font-size: $fz_normal
+      &:not(:last-child)
+        margin-right: ($margin / 2)
