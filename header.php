@@ -23,8 +23,8 @@
 					</a></h1>
 				<?php else: ?>
 					<a href="/" role="home">
-						<p class="site_title">はらぺこ屋</p>
-						<p class="site_desc">猫と自転車の足跡</p>
+						<i class="fa fa-home icon fa-3x"></i>
+						<p class="navbar_item_site_title">はらぺこ屋</p>
 					</a>
 				<?php endif; ?>
 			</li>
