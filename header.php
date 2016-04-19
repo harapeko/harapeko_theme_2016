@@ -28,11 +28,11 @@
 					</a>
 				<?php endif; ?>
 			</li>
-			<li class="navbar_item_bycycle"><a href="/category/bycycle">
+			<li class="navbar_item_bycycle"><a href="/category/自転車">
 				<i class="fa fa-bicycle icon fa-3x"></i>
 				<p class="title">自転車</p>
 			</a></li>
-			<li class="navbar_item_cat"><a href="/category/cat">
+			<li class="navbar_item_cat"><a href="/category/ねこ">
 				<i class="fa fa-github-alt icon fa-3x"></i>
 				<p class="title">ねこ</p>
 			</a></li>

@@ -3,9 +3,9 @@
 <div class="l_contents">
   <main class="l_main" role="main">
     
-    <?php if( !empty( get_query_var('category_name') ) ): //カテゴリの場合 ?>
+    <?php if( ( get_query_var('category_name') ) ): //カテゴリの場合 ?>
       <?php the_archive_title( '<h1 class="ttl_category">', '</h1>' ); ?>
-    <?php elseif( !empty( get_query_var('tag') ) ): //タグの場合 ?>
+    <?php elseif( ( get_query_var('tag') ) ): //タグの場合 ?>
       <?php the_archive_title( '<h1 class="ttl_tag">', '</h1>' ); ?>
     <?php endif; ?>
     

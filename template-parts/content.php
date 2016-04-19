@@ -1,3 +1,8 @@
+<?php
+  $category_data = get_the_category();
+  $tag_data = get_the_tags();
+?>
+
 <article class="post_article <?php echo ( is_page() || ( !is_admin() && ($wp_query->current_post === 0) ) ) ? "post_hero": "post_entry";//frontページは1件目、2件目以降でclass分岐する ?>">
 	<?php the_title( '<h2 class="post_ttl"><a href="' . ( ( is_single() || is_page() ) ? "javascript:void(0)": esc_url( get_permalink() ) ) . '" rel="bookmark">', '</a></h2>' ); ?>
 	
@@ -9,13 +14,13 @@
 
 	<div class="post_info">
 		<div class="post_date"><?php the_time('Y/m/d(D)') ?></div>
-		<?php if( !is_page() && get_the_category()[0] && get_the_tags()[0] ): ?>
+		<?php if( !is_page() && $category_data[0] && $tag_data[0] ): ?>
 		<ul class="post_li_genre">
-			<?php if( get_the_category()[0] ): ?>
-	  			<li class="post_category" rel="category"><a href="<?php echo get_category_link( get_the_category()[0]->term_id ); ?>"><i class="fa fa-map-signs"></i><?php echo get_the_category()[0]->name; ?></a></li>
+			<?php if( $category_data[0] ): ?>
+	  			<li class="post_category" rel="category"><a href="<?php echo get_category_link( $category_data[0]->term_id ); ?>"><i class="fa fa-map-signs"></i><?php echo $category_data[0]->name; ?></a></li>
 	  		<?php endif; ?>
-	  		<?php if( get_the_tags()[0] ): ?>
-	  			<li class="post_tag" rel="tag"><a href="<?php echo get_tag_link( get_the_tags()[0]->term_id ); ?>"><i class="fa fa-tag"></i><?php echo get_the_tags()[0]->name; ?></a></li>
+	  		<?php if( $tag_data[0] ): ?>
+	  			<li class="post_tag" rel="tag"><a href="<?php echo get_tag_link( $tag_data[0]->term_id ); ?>"><i class="fa fa-tag"></i><?php echo $tag_data[0]->name; ?></a></li>
 	  		<?php endif; ?>
 		</ul>
 		<?php endif; ?>
