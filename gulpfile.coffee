@@ -45,7 +45,7 @@ sass_compile_process = (in_path, out_path, dest_file_name = 'app.css') ->
   g.src in_path
   .pipe $.plumber()
   .pipe $.sass
-    outputStyle: 'extend'
+    outputStyle: 'compressed'
   .pipe $.autoprefixer autoprefixer: '> 5%'
   .pipe $.concat dest_file_name
   .pipe g.dest out_path
