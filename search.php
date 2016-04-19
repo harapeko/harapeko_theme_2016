@@ -5,11 +5,14 @@
 
 	<?php if ( have_posts() ) : ?>
 
-		<h1 class="ttl_01">『<?php echo get_search_query(); ?>』で検索しました</h1>
+		<h1 class="ttl_search">『<?php echo get_search_query(); ?>』で検索しました</h1>
 
-		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
-		<?php endwhile; ?>
+		<div class="post_articles">
+			<?php while ( have_posts() ) : the_post(); ?>
+				<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+			<?php endwhile; ?>
+		</div><!-- /.post_articles -->
+		
 		<?php the_posts_pagination(); ?>
 
 	<?php else : ?>

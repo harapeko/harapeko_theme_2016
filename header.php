@@ -15,19 +15,11 @@
 <header class="l_header" role="banner">
 	<nav class="l_navbar" role="navigation">
 		<ul class="navbar">
-			<li class="navbar_item_bycycle"><a href="/category/bycycle">
-				<i class="fa fa-bicycle icon is-large"></i>
-				<p class="title">自転車</p>
-			</a></li>
-			<li class="navbar_item_cat"><a href="/category/cat">
-				<i class="fa fa-github-alt icon is-large"></i>
-				<p class="title">ねこ</p>
-			</a></li>
 			<li class="navbar_item_home">
 				<?php if ( is_front_page() && is_home() ): ?>
 					<h1><a href="/" role="home">
+						<i class="fa fa-home icon fa-3x"></i>
 						<p class="navbar_item_site_title">はらぺこ屋</p>
-						<p class="navbar_item_site_desc">猫と自転車の足跡</p>
 					</a></h1>
 				<?php else: ?>
 					<a href="/" role="home">
@@ -36,13 +28,13 @@
 					</a>
 				<?php endif; ?>
 			</li>
-			<li class="navbar_item_game"><a href="/category/game">
-				<i class="fa fa-gamepad icon is-large"></i>
-				<p class="title">ゲーム</p>
+			<li class="navbar_item_bycycle"><a href="/category/bycycle">
+				<i class="fa fa-bicycle icon fa-3x"></i>
+				<p class="title">自転車</p>
 			</a></li>
-			<li class="navbar_item_programming"><a href="/category/programming">
-				<i class="fa fa-code icon is-large"></i>
-				<p class="title">プログラミング</p>
+			<li class="navbar_item_cat"><a href="/category/cat">
+				<i class="fa fa-github-alt icon fa-3x"></i>
+				<p class="title">ねこ</p>
 			</a></li>
 		</ul>
 	</nav>

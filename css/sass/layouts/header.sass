@@ -2,7 +2,7 @@
   width: 100%
   margin-bottom: $margin
   +desktop
-    margin-bottom: 1.5 * $margin
+    margin-bottom: ($margin * 3)
 
 .l_navbar
   width: 100%
@@ -23,22 +23,11 @@
 
 
 .navbar_item_bycycle
-  order: 1
   @extend .navbar_item
-  background: #3498db
+  background: $info
 .navbar_item_cat
-  order: 2
   @extend .navbar_item
-  background: #40d47e
+  background: $success
 .navbar_item_home
-  order: 3
   @extend .navbar_item
-  background: $turquoise
-.navbar_item_game
-  order: 4
-  @extend .navbar_item
-  background: #9b59b6
-.navbar_item_programming
-  order: 5
-  @extend .navbar_item
-  background: #e74c3c
+  background: $purple

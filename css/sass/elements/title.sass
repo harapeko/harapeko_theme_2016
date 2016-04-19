@@ -1,6 +1,34 @@
-.ttl_01
+%ttl_default
   width: 100%
   margin-bottom: $margin
-  border-bottom: ($margin / 5) solid
-  border-left: $margin solid
-  border-color: $grey-darker
+  font-weight: bold
+  border-bottom: 2px solid
+  font-size: $fz_large
+  line-height: 1
+  &:before
+    font: normal normal normal 14px/1 FontAwesome
+    margin-right: ($margin / 2)
+    font-size: $fz_huge
+
+.widget-title
+  @extend %ttl_default
+  &:before
+    // use font awesome
+    content: "\f113"
+
+.ttl_search
+  @extend %ttl_default
+  &:before
+    content: "\f002"
+    
+.ttl_category
+  @extend %ttl_default
+  &:before
+    content: "\f277"
+    font-size: 28px
+
+.ttl_tag
+  @extend %ttl_default
+  &:before
+    content: "\f02b"
+    font-size: 28px

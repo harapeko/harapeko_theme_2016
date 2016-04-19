@@ -230,7 +230,7 @@ a {
   margin-bottom: 10px; }
   @media screen and (min-width: 768px) {
     .l_header {
-      margin-bottom: 15px; } }
+      margin-bottom: 30px; } }
 
 .l_navbar {
   width: 100%; }
@@ -247,51 +247,25 @@ a {
             align-items: stretch;
     list-style-type: none; }
 
-.navbar_item, .navbar_item_bycycle, .navbar_item_cat, .navbar_item_home, .navbar_item_game, .navbar_item_programming {
+.navbar_item, .navbar_item_bycycle, .navbar_item_cat, .navbar_item_home {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   text-align: center; }
-  .navbar_item a, .navbar_item_bycycle a, .navbar_item_cat a, .navbar_item_home a, .navbar_item_game a, .navbar_item_programming a {
+  .navbar_item a, .navbar_item_bycycle a, .navbar_item_cat a, .navbar_item_home a {
     display: block;
     padding: 10px;
     color: white; }
 
 .navbar_item_bycycle {
-  -webkit-box-ordinal-group: 2;
-  -webkit-order: 1;
-      -ms-flex-order: 1;
-          order: 1;
-  background: #3498db; }
+  background: #42afe3; }
 
 .navbar_item_cat {
-  -webkit-box-ordinal-group: 3;
-  -webkit-order: 2;
-      -ms-flex-order: 2;
-          order: 2;
-  background: #40d47e; }
+  background: #97cd76; }
 
 .navbar_item_home {
-  -webkit-box-ordinal-group: 4;
-  -webkit-order: 3;
-      -ms-flex-order: 3;
-          order: 3;
-  background: #1fc8db; }
-
-.navbar_item_game {
-  -webkit-box-ordinal-group: 5;
-  -webkit-order: 4;
-      -ms-flex-order: 4;
-          order: 4;
-  background: #9b59b6; }
-
-.navbar_item_programming {
-  -webkit-box-ordinal-group: 6;
-  -webkit-order: 5;
-      -ms-flex-order: 5;
-          order: 5;
-  background: #e74c3c; }
+  background: #847bb9; }
 
 .l_footer {
   display: -webkit-box;
@@ -306,6 +280,7 @@ a {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-top: 40px;
   padding: 10px;
   background: #222324;
   color: #f5f7fa; }
@@ -319,10 +294,23 @@ a {
     text-decoration: underline;
     color: #f5f7fa; }
   .l_footer_site_info .fa-twitter-square {
-    font-size: 3em; }
+    font-size: 3em;
+    color: #42afe3; }
   @media screen and (min-width: 768px) {
     .l_footer_site_info .fa-twitter-square {
       font-size: 2em; } }
+
+section.widget {
+  margin-bottom: 20px; }
+
+.widget_recent_entries ul {
+  list-style: disc;
+  padding-left: 1.5em; }
+  .widget_recent_entries ul li {
+    line-height: 1.2;
+    margin-bottom: 5px; }
+    .widget_recent_entries ul li .post-date {
+      color: #69707a; }
 
 .post_articles .post_article.post_hero .post_figure {
   margin-bottom: 10px; }
@@ -684,7 +672,7 @@ a {
 .navigation.pagination {
   display: block;
   width: 100%;
-  margin: 20px 0;
+  margin: 20px 0 0;
   text-align: center; }
   .navigation.pagination .screen-reader-text {
     display: none; }
@@ -695,13 +683,16 @@ a {
       display: -webkit-inline-flex;
       display: -ms-inline-flexbox;
       display: inline-flex;
-      padding: 5px 10px;
-      border: 1px solid #d3d6db;
-      background: -webkit-linear-gradient(#f5f7fa 40%, #d3d6db);
-      background: linear-gradient(#f5f7fa 40%, #d3d6db);
+      padding: .4em .8em;
+      border: 2px solid #42afe3;
+      background: #42afe3;
+      color: #f5f7fa;
       font-size: 15px; }
       .navigation.pagination .nav-links .page-numbers:not(:last-child) {
         margin-right: 5px; }
+      .navigation.pagination .nav-links .page-numbers.current {
+        color: #aeb1b5;
+        background: #f5f7fa; }
 
 .post_content ::-moz-selection {
   background: #ed6c63;
@@ -811,12 +802,31 @@ a {
     position: relative;
     border-radius: 10px; }
 
-.ttl_01 {
+.widget-title, .ttl_search, .ttl_category, .ttl_tag {
   width: 100%;
   margin-bottom: 10px;
+  font-weight: bold;
   border-bottom: 2px solid;
-  border-left: 10px solid;
-  border-color: #222324; }
+  font-size: 18px;
+  line-height: 1; }
+  .widget-title:before, .ttl_search:before, .ttl_category:before, .ttl_tag:before {
+    font: normal normal normal 14px/1 FontAwesome;
+    margin-right: 5px;
+    font-size: 24px; }
+
+.widget-title:before {
+  content: "\f113"; }
+
+.ttl_search:before {
+  content: "\f002"; }
+
+.ttl_category:before {
+  content: "\f277";
+  font-size: 28px; }
+
+.ttl_tag:before {
+  content: "\f02b";
+  font-size: 28px; }
 
 .hljs {
   display: block;

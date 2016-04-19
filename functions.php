@@ -107,8 +107,17 @@ add_action( 'after_setup_theme', 'harapeko_2016__setup' );
  */
 function harapeko_2016__widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'harapeko_2016_' ),
+		'name'          => esc_html__( 'Sidebar1', 'harapeko_2016_' ),
 		'id'            => 'sidebar-1',
+		'description'   => '',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar2', 'harapeko_2016_' ),
+		'id'            => 'sidebar-2',
 		'description'   => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
@@ -177,3 +186,9 @@ function meks_disable_srcset( $html ) {
     return false;
 }
 add_filter( 'wp_calculate_image_srcset', 'meks_disable_srcset' );
+
+
+// 最近の投稿
+function recent_posts( ) {
+	
+}

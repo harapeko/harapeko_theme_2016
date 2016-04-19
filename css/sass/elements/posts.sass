@@ -182,7 +182,7 @@
 .navigation.pagination
   display: block
   width: 100%
-  margin: ($margin * 2) 0
+  margin: ($margin * 2) 0 0
   text-align: center
   .screen-reader-text
     display: none
@@ -190,9 +190,13 @@
     font-size: 0
     .page-numbers
       display: inline-flex
-      padding: ($margin / 2) $margin
-      border: 1px solid $grey-light
-      background: linear-gradient($grey-lighter 40%, $grey-light)
+      padding: .4em .8em
+      border: 2px solid $blue
+      background: $blue
+      color: $grey-lighter
       font-size: $fz_normal
       &:not(:last-child)
         margin-right: ($margin / 2)
+      &.current
+        color: $grey
+        background: $grey-lighter

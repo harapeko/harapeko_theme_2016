@@ -9,10 +9,14 @@
 
 	<div class="post_info">
 		<div class="post_date"><?php the_time('Y/m/d(D)') ?></div>
-		<?php if( !is_page() ): ?>
+		<?php if( !is_page() && get_the_category()[0] && get_the_tags()[0] ): ?>
 		<ul class="post_li_genre">
-	  		<li class="post_category" rel="category"><a href="<?php echo get_the_category()[0]->slug; ?>"><i class="fa fa-map-signs"></i><?php echo get_the_category()[0]->name; ?></a></li>
-	  		<li class="post_tag" rel="tag"><a href="<?php echo get_the_tags()[0]->slug; ?>"><i class="fa fa-tag"></i><?php echo get_the_tags()[0]->name; ?></a></li>
+			<?php if( get_the_category()[0] ): ?>
+	  			<li class="post_category" rel="category"><a href="<?php echo get_category_link( get_the_category()[0]->term_id ); ?>"><i class="fa fa-map-signs"></i><?php echo get_the_category()[0]->name; ?></a></li>
+	  		<?php endif; ?>
+	  		<?php if( get_the_tags()[0] ): ?>
+	  			<li class="post_tag" rel="tag"><a href="<?php echo get_tag_link( get_the_tags()[0]->term_id ); ?>"><i class="fa fa-tag"></i><?php echo get_the_tags()[0]->name; ?></a></li>
+	  		<?php endif; ?>
 		</ul>
 		<?php endif; ?>
 	</div>
