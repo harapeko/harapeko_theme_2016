@@ -124,6 +124,15 @@ function harapeko_2016__widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'GA', 'harapeko_2016_' ),
+		'id'            => 'ga',
+		'description'   => '',
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
 }
 add_action( 'widgets_init', 'harapeko_2016__widgets_init' );
 

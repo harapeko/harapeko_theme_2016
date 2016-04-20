@@ -11,6 +11,9 @@
 </head>
 
 <body class="l_body">
+<?php if( is_active_sidebar( 'ga' ) ): ?>
+	<?php dynamic_sidebar( 'ga' ); ?>
+<?php endif; ?>
 
 <header class="l_header" role="banner">
 	<nav class="l_navbar" role="navigation">
