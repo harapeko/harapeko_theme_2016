@@ -1,1 +1,1 @@
-(function(){}).call(this);
+(function(){$(function(){return $.scrollDepth()})}).call(this);
