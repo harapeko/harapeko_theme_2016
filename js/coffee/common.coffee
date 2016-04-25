@@ -1,2 +1,4 @@
 $ ->
   $.scrollDepth()
+
+hljs.initHighlightingOnLoad()

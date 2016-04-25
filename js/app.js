@@ -1,1 +1,1 @@
-(function(){$(function(){return $.scrollDepth()})}).call(this);
+(function(){$(function(){return $.scrollDepth()}),hljs.initHighlightingOnLoad()}).call(this);
