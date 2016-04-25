@@ -47,7 +47,7 @@ function harapeko_2016__setup() {
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
-	// アイキャッチ画像 使用可能 670x300
+	// アイキャッチ画像 使用可能 700x300
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
