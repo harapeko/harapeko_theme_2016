@@ -4,7 +4,7 @@
 ?>
 
 <article class="post_article <?php echo ( is_page() || ( !is_admin() && ($wp_query->current_post === 0) ) ) ? "post_hero": "post_entry";//frontページは1件目、2件目以降でclass分岐する ?>">
-	<?php the_title( '<h2 class="post_ttl entry-title"><a href="' . ( ( is_single() || is_page() ) ? "javascript:void(0)": esc_url( get_permalink() ) ) . '" rel="bookmark">', '</a></h2>' ); ?>
+	<?php the_title( '<h2 class="post_ttl"><a href="' . ( ( is_single() || is_page() ) ? "javascript:void(0)": esc_url( get_permalink() ) ) . '" rel="bookmark">', '</a></h2>' ); ?>
 	
 	<figure class="post_figure">
 		<a href="<?php echo ( is_single() || is_page() ) ? "javascript:void(0)": esc_url( get_permalink() ); ?>" rel="bookmark">

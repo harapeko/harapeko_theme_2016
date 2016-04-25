@@ -26,7 +26,7 @@
       line-height: $lh-normal
 
 %post_figure_entry
-  margin-bottom: ($margin / 2) //
+  margin-bottom: $margin
   >a
     +filter_lofi($margin)
     +anime_inner_line
@@ -37,19 +37,18 @@
       border-radius: $margin
 
 %post_ttl_entry
-  margin-bottom: ($margin / 2) //
+  margin-bottom: ($margin / 2)
   font-weight: bold
-  font-size: $fz_x_small //
-  line-height: $lh-smaller //
+  line-height: $lh-smaller
   >a
     color: $grey-darker
     +anime_underline($info)
     +anime_zoom(1.002)
     +tablet
-      font-size: $fz_smaller //
+      font-size: $fz_smaller
     +desktop
-      font-size: $fz_small //
-      line-height: $lh-small //
+      font-size: $fz_small
+      line-height: $lh-small
 
 %post_info_hero
   display: flex
@@ -58,9 +57,7 @@
   padding: ($margin / 2) 0
   border-top: 1px solid $grey-light
   border-bottom: 1px solid $grey-light
-  font-size: $fz_x_smaller
-  +tablet
-    font-size: $fz_smaller
+  font-size: $fz_x_small
   .post_date
     margin-right: auto
     color: $grey
@@ -71,10 +68,11 @@
   justify-content: flex-end
   margin-bottom: ($margin / 2)
   padding: 0
+  border-top: 1px solid $grey-light
   border-bottom: 1px solid $grey-light
-  font-size: $fz_tiny
+  font-size: $fz_x_small
   +tablet
-    font-size: $fz_x_smaller
+    border-top: none
   .post_date
     margin-right: auto
     color: $grey
@@ -156,7 +154,6 @@
     order: -20
   .post_info
     @extend %post_info_entry
-    order: -10
     .post_li_genre
       @extend %post_li_genre_hero
 
