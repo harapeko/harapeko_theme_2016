@@ -13,5 +13,6 @@
 <script type="text/javascript" src="/wp-content/themes/harapeko_theme_2016/js/jquery-2.2.3.min.js"></script>
 <script type="text/javascript" src="/wp-content/themes/harapeko_theme_2016/js/jquery.scrolldepth.min.js"></script>
 <script type="text/javascript" src="/wp-content/themes/harapeko_theme_2016/js/app.js"></script>
+<?php wp_footer(); ?>
 </body>
 </html>
