@@ -47,7 +47,7 @@ function harapeko_2016__setup() {
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
-	// アイキャッチ画像 使用可能 700x300
+	// アイキャッチ画像 使用可能 670x300
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
@@ -198,6 +198,98 @@ add_filter( 'wp_calculate_image_srcset', 'meks_disable_srcset' );
 
 
 // 最近の投稿
-function recent_posts( ) {
-	
+function recent_posts() {
+}
+
+
+// 記事用JSON-LD
+add_action('wp_footer','insert_json_ld_article');
+function insert_json_ld_article (){
+    if (have_posts()) : while (have_posts()) : the_post();
+
+        // 設定
+        $permalink      = get_the_permalink();
+        $headline       = get_the_title();
+        $datePublished  = get_the_date('c');
+        $dateModified   = get_the_modified_time('c');
+
+        $category_info  = get_the_category();
+        $articleSection = $category_info[0]->name;
+
+        $description = get_the_excerpt();
+
+        // サムネイル
+        $thumbnail_id = get_post_thumbnail_id();
+        $image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
+        $imageurl = $image[0];
+        // サムネイルが取れなかった場合に、文中の最初の写真をセット
+        if(!$imageurl){
+            $imageurl = catch_that_image();
+        }
+        // 文中の最初の画像も取れなかった場合に、ダミー画像をセット
+        if(!$imageurl){
+            $imageurl = 'https://placekitten.com/g/700/300';
+        }
+
+        // 画像の大きさを取得する
+        $imginfo = getimagesize($imageurl);
+        $imagewidth = $imginfo[0];
+        $imageheight = $imginfo[1];
+
+        $json= "
+        \"@context\" : \"http://schema.org\",
+        \"@type\" : \"BlogPosting\",
+        \"mainEntityOfPage\" : {
+            \"@type\" : \"WebPage\",
+            \"url\" : \"{$permalink}\"
+        },
+        \"headline\" : \"{$headline}\",
+        \"author\" : {
+            \"@type\" : \"Person\",
+            \"name\" : \"@harapeko_wktk\"
+        },
+        \"datePublished\" : \"{$datePublished}\",
+        \"dateModified\" : \"{$dateModified}\",
+        \"image\" : {
+            \"@type\" : \"imageObject\",
+            \"url\" : \"{$imageurl}\",
+            \"width\" : {$imagewidth},
+            \"height\" : {$imageheight}
+        },
+        \"articleSection\" : \"{$articleSection}\",
+        \"publisher\" : {
+            \"@type\" : \"Organization\",
+            \"name\" : \"はらぺこ屋\",
+            \"logo\" : {
+                \"@type\" : \"imageObject\",
+                \"url\" : \"http://harapeko.wktk.so/wp-content/uploads/2016/04/publisher_logo.jpg\",
+                \"width\" : 600,
+                \"height\" : 60
+            }
+        },
+        \"description\": \"{$description}\"
+        ";
+
+        echo '<script type="application/ld+json">{'.$json.'}</script>';
+    endwhile; endif;
+    rewind_posts();
+}
+
+/**
+ * 文中の最初の画像を返却する
+ */
+function catch_that_image() {
+    global $post, $posts;
+    $first_img = '';
+    ob_start();
+    ob_end_clean();
+    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+
+    if($output){
+        $first_img = $matches[1][0];
+    }else{
+        $first_img = false;
+    }
+
+    return $first_img;
 }
