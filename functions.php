@@ -275,6 +275,130 @@ function insert_json_ld_article (){
     rewind_posts();
 }
 
+// JSON-LDパンくず
+add_action('wp_footer','insert_json_ld_breadcrumb');
+function insert_json_ld_breadcrumb (){
+	$json = "";
+	
+	// トップページ
+	// トップ
+	if( is_home() ){
+        $json= "
+		\"@context\": \"http://schema.org\",
+		\"@type\": \"BreadcrumbList\",
+		\"itemListElement\": [{
+			\"@type\": \"ListItem\",
+			\"position\": 1,
+			\"item\": {
+				\"@id\": \"http://harapeko.wktk.so\",
+				\"name\": \"TOP\"
+			}
+		}]
+        ";
+
+	// カテゴリ
+	// トップ > カテゴリ名
+	}elseif( is_category() ){
+		$category = get_the_category();
+		$categoryName = $category[0]->cat_name;
+		$categoryId = get_cat_ID( $categoryName );
+		$categoryUrl  = get_category_link( $categoryId );
+		
+        $json= "
+		\"@context\": \"http://schema.org\",
+		\"@type\": \"BreadcrumbList\",
+		\"itemListElement\": [{
+			\"@type\": \"ListItem\",
+			\"position\": 1,
+			\"item\": {
+				\"@id\": \"http://harapeko.wktk.so\",
+				\"name\": \"TOP\"
+			}
+		},{
+			\"@type\": \"ListItem\",
+			\"position\": 2,
+			\"item\": {
+				\"@id\": \"{$categoryUrl}\",
+				\"name\": \"{$categoryName}\"
+			}
+		}]
+        ";
+
+
+	// タグ
+	// トップ > タグ名
+	}elseif( is_tag() ){
+		$title = single_tag_title("", false);
+		$tags  = get_the_tags();
+		$url = get_tag_link( $tags[0]->term_id );
+		
+        $json= "
+		\"@context\": \"http://schema.org\",
+		\"@type\": \"BreadcrumbList\",
+		\"itemListElement\": [{
+			\"@type\": \"ListItem\",
+			\"position\": 1,
+			\"item\": {
+				\"@id\": \"http://harapeko.wktk.so\",
+				\"name\": \"TOP\"
+			}
+		},{
+			\"@type\": \"ListItem\",
+			\"position\": 2,
+			\"item\": {
+				\"@id\": \"{$url}\",
+				\"name\": \"{$title}\"
+			}
+		}]
+        ";
+	
+	// 個別記事
+	// トップ > カテゴリ名 > 記事名
+	}elseif( is_single() ){
+		$category = get_the_category();
+		$categoryName = $category[0]->cat_name;
+		$categoryId = get_cat_ID( $categoryName );
+		$categoryUrl  = get_category_link( $categoryId );
+		
+		$permalink = get_the_permalink();
+		$title = get_the_title();
+		
+        $json= "
+		\"@context\": \"http://schema.org\",
+		\"@type\": \"BreadcrumbList\",
+		\"itemListElement\": [{
+			\"@type\": \"ListItem\",
+			\"position\": 1,
+			\"item\": {
+				\"@id\": \"http://harapeko.wktk.so\",
+				\"name\": \"TOP\"
+			}
+		},{
+			\"@type\": \"ListItem\",
+			\"position\": 2,
+			\"item\": {
+				\"@id\": \"{$categoryUrl}\",
+				\"name\": \"{$categoryName}\"
+			}
+		},{
+			\"@type\": \"ListItem\",
+			\"position\": 3,
+			\"item\": {
+				\"@id\": \"{$permalink}\",
+				\"name\": \"{$title}\"
+			}
+		}]
+        ";
+	}
+	
+	// json-ld が造られていれば、出力する
+	if( !empty($json) ){
+		echo '<script type="application/ld+json">{'.$json.'}</script>';
+	}
+	
+}
+
+
 /**
  * 文中の最初の画像を返却する
  */
