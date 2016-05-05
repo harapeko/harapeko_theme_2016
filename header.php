@@ -2,10 +2,14 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="@harapeko_wktk">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="/wp-content/themes/harapeko_theme_2016/css/app.css">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<link rel="stylesheet" href="/wp-content/themes/harapeko_theme_2016/css/app.css">
+<link rel="icon" href="/favicon.ico">
+<?php wp_head(); ?>
 </head>
 
 <body class="l_body">
