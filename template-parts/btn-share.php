@@ -8,5 +8,5 @@ if(typeof(window.NINJA_CO_JP_ONETAG_BUTTON_b6d9b888abb4cd761c6b875d93a96f26)=='u
     window.NINJA_CO_JP_ONETAG_BUTTON_b6d9b888abb4cd761c6b875d93a96f26.ONETAGButton_Load();}
 })(document);
 //]]>
-</script><span class="ninja_onebutton_hidden" style="display:none;"><?php the_permalink(); ?></span><span style="display:none;" class="ninja_onebutton_hidden"><?php the_title(); ?></span>
+</script><span class="ninja_onebutton_hidden" style="display:none;"><?php get_the_permalink(); ?></span><span style="display:none;" class="ninja_onebutton_hidden"><?php get_the_title(); ?></span>
 </div>
