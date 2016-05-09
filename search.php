@@ -18,6 +18,8 @@
 	<?php else : ?>
 		<?php get_template_part( 'template-parts/content', 'none' ); ?>
 	<?php endif; ?>
+	
+	<?php get_template_part( 'template-parts/btn-share' ); ?>
 
 	</main><!-- ./l_main-main -->
 	

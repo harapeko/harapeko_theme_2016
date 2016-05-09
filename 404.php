@@ -13,7 +13,7 @@
 		
 		<a href="/">▶トップページに戻る</a>
 		
-		<?php get_search_form(); ?>
+		<?php get_template_part( 'template-parts/btn-share' ); ?>
 
 	</main><!-- ./l_main-main -->
 	

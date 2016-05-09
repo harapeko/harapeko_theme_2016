@@ -5,6 +5,8 @@
   	<?php while ( have_posts() ) : the_post(); ?>
   		<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
   	<?php endwhile; ?>
+  	
+  	<?php get_template_part( 'template-parts/btn-share' ); ?>
   </main><!-- .l_main -->
 
   <?php get_sidebar(); ?>

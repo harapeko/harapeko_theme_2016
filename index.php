@@ -13,6 +13,8 @@
     <?php endif; ?>
 
     <?php the_posts_pagination(); ?>
+    
+    <?php get_template_part( 'template-parts/btn-share' ); ?>
   </main><!-- .l_main -->
   
   <?php get_sidebar(); ?>
