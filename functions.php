@@ -218,18 +218,8 @@ function insert_json_ld_article (){
 
         $description = get_the_excerpt();
 
-        // サムネイル
-        $thumbnail_id = get_post_thumbnail_id();
-        $image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-        $imageurl = $image[0];
-        // サムネイルが取れなかった場合に、文中の最初の写真をセット
-        if(!$imageurl){
-            $imageurl = catch_that_image();
-        }
-        // 文中の最初の画像も取れなかった場合に、ダミー画像をセット
-        if(!$imageurl){
-            $imageurl = 'https://placekitten.com/g/700/300';
-        }
+		// 文中の最初の画像を設定
+		$imageurl = get_first_image();
 
         // 画像の大きさを取得する
         $imginfo = getimagesize($imageurl);
@@ -399,21 +389,109 @@ function insert_json_ld_breadcrumb (){
 }
 
 
-/**
- * 文中の最初の画像を返却する
- */
-function catch_that_image() {
-    global $post, $posts;
-    $first_img = '';
-    ob_start();
-    ob_end_clean();
-    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-
-    if($output){
-        $first_img = $matches[1][0];
-    }else{
-        $first_img = false;
+function get_first_image() {
+    // ダミー画像
+    $imageurl = "http://harapeko.wktk.so/ogp_card2.png";
+ 
+    if (is_single()) {
+        global $post;
+        $content_str = $post->post_content;
+ 
+        // 投稿記事に画像があるか調べるための正規表現パターン
+        $img_pattern = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
+ 
+        if (has_post_thumbnail()) {
+            // アイキャッチ画像がある場合
+            $eyecatch_id = get_post_thumbnail_id();
+            $eyecatch = wp_get_attachment_image_src( $eyecatch_id, 'full' );
+            $imageurl = $eyecatch[0];
+        } elseif ( preg_match( $img_pattern, $content_str, $matches ) ) {
+            //アイキャッチ画像はないが記事内に画像がある場合
+            $imageurl = $matches[2];
+        }
     }
+ 
+    return $imageurl;
+}
 
-    return $first_img;
+/*
+ * OGP for single.php, index.php
+ * Via: http://easyramble.com/wordpress-ogp-tags.html
+ */
+function get_ogp_tags() {
+    // OGP 情報
+    $imageurl = get_first_image();
+    $description = get_meta_description();
+ 
+    if (is_single()) {
+        // 個別記事では記事タイトルと記事URLを取得
+        $title = get_the_title();
+        $type  = 'article';
+        $url   = get_permalink();
+    } elseif (is_home()) {
+        // ホームページではブログ名とホームURLを取得
+        $title = get_bloginfo('name');
+        $type  = 'website';
+        $url   = home_url();
+    }
+ 
+$ogp_tags = <<< EOF
+<!-- OGP -->
+<meta property="og:title" content="$title" />
+<meta property="og:type" content="$type" />
+<meta property="og:url" content="$url" />
+<meta property="og:image" content="$imageurl" />
+<meta property="og:description" content="$description" />
+<meta property="og:site_name" content="はらぺこ屋" />
+<meta property="fb:app_id" content="1727471197506613" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@harapeko_wktk">
+EOF;
+ 
+    return $ogp_tags;
+}
+ 
+add_action( 'wp_head', 'echo_ogp_tags' );
+function echo_ogp_tags() {
+    if (is_single() || is_home()) {
+        echo get_ogp_tags();
+    }
+}
+
+// get meta description from the content
+function get_meta_description() {
+  global $post;
+  $description = "";
+  if ( is_home() ) {
+    // ホームでは、ブログの説明文を取得
+    $description = get_bloginfo( 'description' );
+  }
+  elseif ( is_category() ) {
+    // カテゴリーページでは、カテゴリーの説明文を取得
+    $description = category_description();
+  }
+  elseif ( is_single() ) {
+    if ($post->post_excerpt) {
+      // 記事ページでは、記事本文から抜粋を取得
+      $description = $post->post_excerpt;
+    } else {
+      // post_excerpt で取れない時は、自力で記事の冒頭100文字を抜粋して取得
+      $description = strip_tags($post->post_content);
+      $description = str_replace("\n", "", $description);
+      $description = str_replace("\r", "", $description);
+      $description = mb_substr($description, 0, 100) . "...";
+    }
+  } else {
+    ;
+  }
+ 
+  return $description;
+}
+ 
+// echo meta description tag
+add_action( 'wp_head', 'echo_meta_description_tag' );
+function echo_meta_description_tag() {
+  if ( is_home() || is_category() || is_single() ) {
+    echo '<meta name="description" content="' . get_meta_description() . '" />' . "\n";
+  }
 }
