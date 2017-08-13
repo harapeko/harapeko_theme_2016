@@ -2,11 +2,12 @@
   h1, h2, h3, h4, h5, h6
   h1
 
-  h2
-  h3
-  h4
-  h5
+  h2,
+  h3,
+  h4,
+  h5,
   h6
+    font-weight: bold
 
 %post_content_boundary
   div
@@ -14,17 +15,21 @@
 
 %post_content_tbl
   table
+    margin-bottom: 20px
     tr
       thead
+      th,td
+        border: 1px solid #333
       th
+        background-color: #eee
       td
+        background-color: white
         img
       tfoot
 
 %post_content_li
-  ul
-    li
-  ol
+  ul,ol
+    margin-bottom: 20px
     li
 
 %post_content_dl
